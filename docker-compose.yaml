@@ -1,0 +1,22 @@
+version: '3'
+services:
+   geminabox:
+     container_name: geminabox
+     image: testgeminabox
+     build:
+       context: ./gembox
+     ports:
+       - "9292:9292"
+     networks:
+       - net
+   nginx:
+     container_name: nginx-for-box
+     image: nginxbox
+     build:
+       context: ./nginx
+     ports:
+      - "80:80"
+     networks:
+       - net
+networks:
+   net:
